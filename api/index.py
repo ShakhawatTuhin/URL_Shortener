@@ -7,7 +7,7 @@ from flask import Flask, request, render_template, redirect
 app = Flask(__name__, template_folder='../templates')
 
 # Get the database path from an environment variable, or use a default path
-DATABASE_PATH = os.getenv('DATABASE_PATH', '../database.db')
+DATABASE_PATH = '/tmp/database.db'
 
 def generate_short_url():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
