@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortened URL</title>
+</head>
+<body>
+  <h1>Here is your shortened URL</h1>
+  <a href="{{ url_for('redirect_to_url', short_url = short_url) }}" target="_blank">
+    {{ request.host }}/{{ short_url }}
+  </a>
+
+</body>
+</html>
