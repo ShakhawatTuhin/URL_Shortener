@@ -1,18 +1,17 @@
 import random
 import sqlite3
 import string
-from ctypes import HRESULT
 
 from flask import Flask, request, render_template, redirect
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='../templates')
 
 def generate_short_url():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
 
 
 def init_db():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('../database.db')
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS urls(
@@ -37,7 +36,7 @@ def index():
         short_url = generate_short_url()
 
 
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect('../database.db')
         cursor = conn.cursor()
         cursor.execute("INSERT INTO urls (original_url, short_url) VALUES (?, ?)", (original_url, short_url))
         conn.commit()
@@ -49,7 +48,7 @@ def index():
 
 @app.route('/<short_url>')
 def redirect_to_url(short_url):
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('../database.db')
     cursor = conn.cursor()
     cursor.execute("SELECT original_url FROM urls WHERE short_url = ?", (short_url,))
     result = cursor.fetchone()
