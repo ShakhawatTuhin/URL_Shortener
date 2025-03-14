@@ -18,11 +18,7 @@ A simple and efficient **URL Shortener** built with Flask, SQLite, and HTML temp
 
 ## **Screenshot**  
 
-Add your screenshot to the repository and reference it like this:  
-
-```markdown
-![Flask URL Shortener](screenshot.png)
-```
+![Flask URL Shortener](assets/screenshot.png)
 
 To add the screenshot:  
 1. Take a screenshot of your web app.  
